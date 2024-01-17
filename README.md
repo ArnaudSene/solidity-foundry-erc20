@@ -1,66 +1,63 @@
-## Foundry
+# ERC20 token smart contract
 
-**Foundry is a blazing fast, portable and modular toolkit for Ethereum application development written in Rust.**
+## About
 
-Foundry consists of:
+This code is to create a token based on ERC20.
 
--   **Forge**: Ethereum testing framework (like Truffle, Hardhat and DappTools).
--   **Cast**: Swiss army knife for interacting with EVM smart contracts, sending transactions and getting chain data.
--   **Anvil**: Local Ethereum node, akin to Ganache, Hardhat Network.
--   **Chisel**: Fast, utilitarian, and verbose solidity REPL.
+- [OpenZeppelin ERC20](https://github.com/OpenZeppelin/openzeppelin-contracts/tree/master/contracts/token/ERC20)
 
-## Documentation
+## How it works?
 
-https://book.getfoundry.sh/
+1. Deploy the contract with an initial supply
+2. Use all function defined in ERC20 as
+   1. totalSupply
+   2. balanceOf
+   3. transfer
+   4. transferFrom
+   5. allowance
+   6. approve
 
 ## Usage
 
-### Build
+> Required
+> Rename `sample-env` by `.env` and replace with the approrpiate values
 
+### Test 
 ```shell
-$ forge build
+make help
+```
+```
+Usage:
+  make deploy [ARGS=...]
+    example: make deploy ARGS="--network sepolia"
+
+  make fund [ARGS=...]
+    example: make deploy ARGS="--network sepolia"
+```
+
+
+
+### Deploy
+local chain (Anvil)
+```shell
+make deploy
+```
+Sepolia testnet
+```shell
+make deploy ARGS="--network sepolia"
+```
+
+### Install dependencies
+```shell
+make install
+```
+
+### Build
+```shell
+make build
 ```
 
 ### Test
-
 ```shell
-$ forge test
-```
-
-### Format
-
-```shell
-$ forge fmt
-```
-
-### Gas Snapshots
-
-```shell
-$ forge snapshot
-```
-
-### Anvil
-
-```shell
-$ anvil
-```
-
-### Deploy
-
-```shell
-$ forge script script/Counter.s.sol:CounterScript --rpc-url <your_rpc_url> --private-key <your_private_key>
-```
-
-### Cast
-
-```shell
-$ cast <subcommand>
-```
-
-### Help
-
-```shell
-$ forge --help
-$ anvil --help
-$ cast --help
+make test
 ```
